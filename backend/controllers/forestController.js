@@ -64,12 +64,47 @@ const createForest = async (req, res) => {
 
 //delete a forest
 
-//update a forest
+const deleteForest =  async (req, res) => {
+    const { id } = req.params 
 
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: "no such forest"})
+    }
+
+    const forest = await Forest.findOneAndDelete({_id: id})
+
+    if(!forest) {
+        return res.status(404).json({error: "no such forest"})
+    }
+
+    res.status(200).json(forest)
+
+}
+
+//update a forest
+const updateForest = async (req, res) => {
+    const { id } = req.params 
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: "no such forest"})
+    }
+
+    const forest = await Forest.findOneAndUpdate({_id: id},{
+        ...req.body
+    })
+
+    if(!forest) {
+        return res.status(404).json({error: "no such forest"})
+    }
+
+    res.status(200).json(forest)
+}
 
 //export
 module.exports = {
     getForests, 
     getForest,
-    createForest
+    createForest, 
+    deleteForest, 
+    updateForest
 }

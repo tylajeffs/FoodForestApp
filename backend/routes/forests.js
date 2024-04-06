@@ -2,7 +2,9 @@ const express = require("express");
 const {
   getForests,
   getForest,
-  createForest
+  createForest, 
+  deleteForest,
+  updateForest
 } = require('../controllers/forestController')
 
 const router = express.Router();
@@ -17,14 +19,10 @@ router.get("/:id", getForest);
 router.post("/", createForest);
 
 //DELETE a forest
-router.delete("/:id", (req, res) => {
-  res.json({ mssg: "DELETE a forest" });
-});
+router.delete("/:id", deleteForest);
 
 //UPDATE a forest
-router.patch("/:id", (req, res) => {
-  res.json({ mssg: "UPDATE a forest" });
-});
+router.patch("/:id", updateForest);
 
 //export all routes
 module.exports = router;
