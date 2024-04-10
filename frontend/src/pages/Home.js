@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+//components
+import ForestDetails from '../components/ForestDetails';
+
 const Home = () => {
     const [forests, setForests] = useState(null)
 
@@ -20,7 +23,7 @@ const Home = () => {
         <div className="home">
             <div className="forests">
                 {forests && forests.map((forest)=> (
-                    <p key={forest._id}>{forest.title}</p>
+                    <ForestDetails key={forest._id} forest={forest} />
                 ))}
             </div>
         </div>
