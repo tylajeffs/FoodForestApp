@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useForestsContext } from "../hooks/useForestsContext";
 
 //components
 import ForestDetails from '../components/ForestDetails';
 import ForestForm from "../components/ForestForm";
 
 const Home = () => {
-    const [forests, setForests] = useState(null)
+    const {forests, dispatch} = useForestsContext()
 
     useEffect(() => {
         const fetchForests = async () => {
@@ -13,7 +14,7 @@ const Home = () => {
             const json = await response.json()
 
             if(response.ok) {
-                setForests(json)
+                dispatch({type: 'SET_FORESTS', payload: json})
             }
         }
         fetchForests()
