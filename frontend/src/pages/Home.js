@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 //components
 import ForestDetails from '../components/ForestDetails';
+import ForestForm from "../components/ForestForm";
 
 const Home = () => {
     const [forests, setForests] = useState(null)
@@ -26,6 +27,7 @@ const Home = () => {
                     <ForestDetails key={forest._id} forest={forest} />
                 ))}
             </div>
+            <ForestForm />
         </div>
     )
 }
