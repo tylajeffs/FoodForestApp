@@ -1,4 +1,20 @@
+import { useForestsContext } from "../hooks/useForestsContext"
+
 const ForestDetails = ({ forest }) => {
+    const { dispatch } = useForestsContext()
+
+    const handleClick = async () => {
+        const response = await fetch('/api/forests/' + forest._id, {
+            method: 'DELETE'
+        })
+        const json = await response.json()
+
+        if(response.ok) {
+            dispatch({type: 'DELETE_FOREST', payload: json})
+        }
+
+    }
+
     return (
         <div className="forest-details">
             <h4>{forest.title}</h4>
@@ -11,6 +27,7 @@ const ForestDetails = ({ forest }) => {
             <p><strong>Vine: </strong>{forest.vine}</p>
             <p><strong>Fungi: </strong>{forest.fungi}</p>
             <p><strong>Created: </strong>{forest.createdAt}</p>
+            <span onClick={handleClick}>delete</span>
         </div>
     )
 }

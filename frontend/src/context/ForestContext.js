@@ -12,6 +12,10 @@ export const forestsReducer = (state, action) => {
             return {
                 forests: [action.payload, ...state.forests]
             }
+        case 'DELETE_FOREST':
+            return {
+                forests: state.forests.filter((f) => f._id !== action.payload._id)
+            }
         default: 
             return state
     }
