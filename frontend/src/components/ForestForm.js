@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useForestsContext } from '../hooks/useForestsContext'
 
 const ForestForm = () => {
+    const { dispatch } = useForestsContext()
+
     const [title, setTitle] = useState('')
     const [ecoregion, setEcoregion] = useState('')
     const [canopy, setCanopy] = useState('')
@@ -44,6 +47,7 @@ const ForestForm = () => {
             setFungi('')
             setError(null)
             console.log("new forest created", json)
+            dispatch({type: 'CREATE_FOREST', payload: json})
         }
     }
 
