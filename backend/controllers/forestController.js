@@ -39,7 +39,41 @@ const createForest = async (req, res) => {
         vine,
         fungi,
       } = req.body;
+
+      let emptyFields = []
+
+      if(!title) {
+        emptyFields.push('title')
+      }
+      if(!ecoregion) {
+        emptyFields.push('ecoregion')
+      }
+      if(!canopy) {
+        emptyFields.push('canopy')
+      }
+      if(!subCanopy) {
+        emptyFields.push('subCanopy')
+      }
+      if(!shrub) {
+        emptyFields.push('shrub')
+      }
+      if(!herb) {
+        emptyFields.push('herb')
+      }
+      if(!groundCover) {
+        emptyFields.push('groundCover')
+      }
+      if(!underground) {
+        emptyFields.push('underground')
+      }
+      if(!vine) {
+        emptyFields.push('vine')
+      }
     
+      if(emptyFields.length >0) {
+        return res.status(400).json({error: "please fill in all the fields", emptyFields})
+      }
+
       //add doc to database
       try {
         const forest = await Forest.create({

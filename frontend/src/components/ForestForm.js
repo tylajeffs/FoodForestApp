@@ -15,6 +15,7 @@ const ForestForm = () => {
     const [vine, setVine] = useState('')
     const [fungi, setFungi] = useState('')
     const [error, setError] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -33,6 +34,7 @@ const ForestForm = () => {
 
         if(!response.ok) {
             setError(json.error)
+            setEmptyFields(json.emptyFields)
         }
         if(response.ok) {
             setTitle('')
@@ -45,6 +47,7 @@ const ForestForm = () => {
             setUnderground('')
             setVine('')
             setFungi('')
+            setEmptyFields([])
             setError(null)
             console.log("new forest created", json)
             dispatch({type: 'CREATE_FOREST', payload: json})
@@ -60,6 +63,7 @@ const ForestForm = () => {
                 type="text"
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
+                className={emptyFields.includes('title') ? 'error' : ''}
             />
 
             <label>Ecoregion:</label>
@@ -67,6 +71,7 @@ const ForestForm = () => {
                 type="text"
                 onChange={(e) => setEcoregion(e.target.value)}
                 value={ecoregion}
+                className={emptyFields.includes('ecoregion') ? 'error' : ''}
             />
 
             <label>Canopy:</label>
@@ -74,6 +79,7 @@ const ForestForm = () => {
                 type="text"
                 onChange={(e) => setCanopy(e.target.value)}
                 value={canopy}
+                className={emptyFields.includes('canopy') ? 'error' : ''}
             />
 
             <label>Subcanopy:</label>
@@ -81,6 +87,7 @@ const ForestForm = () => {
                 type="text"
                 onChange={(e) => setSubCanopy(e.target.value)}
                 value={subCanopy}
+                className={emptyFields.includes('subCanopy') ? 'error' : ''}
             />
 
             <label>Shrub:</label>
@@ -88,6 +95,7 @@ const ForestForm = () => {
                 type="text"
                 onChange={(e) => setShrub(e.target.value)}
                 value={shrub}
+                className={emptyFields.includes('shrub') ? 'error' : ''}
             />
 
             <label>Herb:</label>
@@ -95,6 +103,7 @@ const ForestForm = () => {
                 type="text"
                 onChange={(e) => setHerb(e.target.value)}
                 value={herb}
+                className={emptyFields.includes('herb') ? 'error' : ''}
             />
 
             <label>Ground Cover:</label>
@@ -102,6 +111,7 @@ const ForestForm = () => {
                 type="text"
                 onChange={(e) => setgroundCover(e.target.value)}
                 value={groundCover}
+                className={emptyFields.includes('groundCover') ? 'error' : ''}
             />
 
             <label>Underground:</label>
@@ -109,6 +119,7 @@ const ForestForm = () => {
                 type="text"
                 onChange={(e) => setUnderground(e.target.value)}
                 value={underground}
+                className={emptyFields.includes('underground') ? 'error' : ''}
             />
 
             <label>Vine:</label>
@@ -116,6 +127,7 @@ const ForestForm = () => {
                 type="text"
                 onChange={(e) => setVine(e.target.value)}
                 value={vine}
+                className={emptyFields.includes('vine') ? 'error' : ''}
             />  
 
             <label>Fungi:</label>
