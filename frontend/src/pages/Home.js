@@ -19,7 +19,7 @@ const Home = () => {
         }
         fetchForests()
 
-    }, [])
+    }, [dispatch])
 
     return (
         <div className="home">

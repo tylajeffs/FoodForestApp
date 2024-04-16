@@ -1,5 +1,8 @@
 import { useForestsContext } from "../hooks/useForestsContext"
 
+//date fns
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 const ForestDetails = ({ forest }) => {
     const { dispatch } = useForestsContext()
 
@@ -26,8 +29,8 @@ const ForestDetails = ({ forest }) => {
             <p><strong>Underground: </strong>{forest.underground}</p>
             <p><strong>Vine: </strong>{forest.vine}</p>
             <p><strong>Fungi: </strong>{forest.fungi}</p>
-            <p><strong>Created: </strong>{forest.createdAt}</p>
-            <span onClick={handleClick}>delete</span>
+            <p><strong>Created: </strong>{formatDistanceToNow(new Date(forest.createdAt),{ addSuffix: true })}</p>
+            <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
         </div>
     )
 }
