@@ -6,8 +6,12 @@ const {
   deleteForest,
   updateForest
 } = require('../controllers/forestController')
+const requireAuth = require('../middleware/requireAuth')
 
+//require auth for all forest routes
 const router = express.Router();
+
+router.use(requireAuth)
 
 //GET all forests
 router.get("/", getForests);
