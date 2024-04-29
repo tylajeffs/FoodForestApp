@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 //get all forests
 const getForests = async (req, res) => {
-    const forests = await Forest.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+    const forests = await Forest.find({ user_id }).sort({createdAt: -1})
 
     res.status(200).json(forests)
 }
@@ -76,6 +77,8 @@ const createForest = async (req, res) => {
 
       //add doc to database
       try {
+        const user_id = req.user._id
+
         const forest = await Forest.create({
           title,
           ecoregion,
@@ -86,7 +89,8 @@ const createForest = async (req, res) => {
           groundCover,
           underground,
           vine,
-          fungi
+          fungi, 
+          user_id
         });
     
         res.status(200).json(forest);

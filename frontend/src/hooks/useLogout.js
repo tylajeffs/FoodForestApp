@@ -1,7 +1,9 @@
 import  { useAuthContext } from './useAuthContext'
+import { useForestsContext } from './useForestsContext'
 
 export const useLogout = () => {
     const { dispatch } = useAuthContext()
+    const { dispatch: forestDispatch } = useForestsContext()
 
     const logout = () => {
         //remove user from local storage
@@ -9,6 +11,7 @@ export const useLogout = () => {
 
         //dispatch logout action
         dispatch({type: 'LOGOUT'})
+        forestDispatch({type: 'SET_FORESTS', payload: null})
 
     }
 
