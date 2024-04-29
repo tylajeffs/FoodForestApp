@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { useForestsContext } from '../hooks/useForestsContext'
+import { useAuthContext } from "../hooks/useAuthContext"
 
 const ForestForm = () => {
     const { dispatch } = useForestsContext()
+    const { user } = useAuthContext()
 
     const [title, setTitle] = useState('')
     const [ecoregion, setEcoregion] = useState('')
@@ -20,13 +22,19 @@ const ForestForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if(!user) {
+            setError('You must be logged in')
+            return
+        }
+
         const forest = {title, ecoregion, canopy, subCanopy, shrub, herb, groundCover, underground, vine, fungi}
 
         const response = await fetch('/api/forests', {
             method: 'POST',
             body: JSON.stringify(forest),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
 

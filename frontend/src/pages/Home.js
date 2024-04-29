@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useForestsContext } from "../hooks/useForestsContext";
+import { useAuthContext } from "../hooks/useAuthContext"
 
 //components
 import ForestDetails from '../components/ForestDetails';
@@ -7,19 +8,28 @@ import ForestForm from "../components/ForestForm";
 
 const Home = () => {
     const {forests, dispatch} = useForestsContext()
+    const {user} = useAuthContext()
 
     useEffect(() => {
         const fetchForests = async () => {
-            const response = await fetch('/api/forests')
+            const response = await fetch('/api/forests', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if(response.ok) {
                 dispatch({type: 'SET_FORESTS', payload: json})
             }
         }
-        fetchForests()
 
-    }, [dispatch])
+        if(user) {
+            fetchForests()
+        }
+        
+
+    }, [dispatch, user])
 
     return (
         <div className="home">
