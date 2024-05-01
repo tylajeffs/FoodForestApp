@@ -4,7 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext"
 
 //components
 import ForestDetails from '../components/ForestDetails';
-import ForestForm from "../components/ForestForm";
+import ForestPicker from "./ForestPicker";
 
 const Home = () => {
     const {forests, dispatch} = useForestsContext()
@@ -38,7 +38,7 @@ const Home = () => {
                     <ForestDetails key={forest._id} forest={forest} />
                 ))}
             </div>
-            <ForestForm />
+            <ForestPicker />
         </div>
     )
 }

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useForestsContext } from '../hooks/useForestsContext'
 import { useAuthContext } from "../hooks/useAuthContext"
 
-const ForestForm = () => {
+const OldForestForm = () => {
     const { dispatch } = useForestsContext()
     const { user } = useAuthContext()
 
@@ -153,4 +153,4 @@ const ForestForm = () => {
     )
 }
 
-export default ForestForm
+export default OldForestForm
