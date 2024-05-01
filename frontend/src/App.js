@@ -30,8 +30,8 @@ function App() {
               element={!user ? <Login/> : <Navigate to="/"/>}
             />
             <Route
-              path="/test"
-              element={<ForestPicker />}
+              path="/generate"
+              element={user ? <ForestPicker /> : <Navigate to="/login"/>}
             />
           </Routes>
         </div>
