@@ -1,20 +1,25 @@
 import { useState } from 'react'
 import BasicInfoPart from "../components/BasicInfoPart"
 import CanopyPart from "../components/CanopyPart"
-import UnderstoryPart from "../components/UnderstoryPart"
+import SubCanopyPart from "../components/SubCanopyPart"
 
 const ForestPicker = () => {
     const [page, setPage] = useState(0)
+    const [data, setData] = useState({
+        title: '',
+        canopy: '',
+        subCanopy: '',
+    })
 
     const titles = ["Basic Info", "Canopy", "Subcanopy"]
 
     const pageDisplay = () => {
         if(page === 0) {
-            return <BasicInfoPart />
+            return <BasicInfoPart data={data} setData={setData}/>
         } else if(page === 1) {
-            return <CanopyPart />
+            return <CanopyPart data={data} setData={setData}/>
         } else {
-            return <UnderstoryPart />
+            return <SubCanopyPart data={data} setData={setData}/>
         }
     }
 
