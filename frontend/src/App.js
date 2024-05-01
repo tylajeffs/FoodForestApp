@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
+import ForestPicker from './pages/ForestPicker'
 
 function App() {
   const { user } = useAuthContext()
@@ -27,6 +28,10 @@ function App() {
             <Route
               path="/login"
               element={!user ? <Login/> : <Navigate to="/"/>}
+            />
+            <Route
+              path="/test"
+              element={<ForestPicker />}
             />
           </Routes>
         </div>
