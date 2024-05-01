@@ -2,6 +2,12 @@ import { useState } from 'react'
 import BasicInfoPart from "../components/ForestParts/BasicInfoPart"
 import CanopyPart from "../components/ForestParts/CanopyPart"
 import SubCanopyPart from "../components/ForestParts/SubCanopyPart"
+import ShrubPart from "../components/ForestParts/ShrubPart"
+import HerbPart from "../components/ForestParts/HerbPart"
+import GroundCoverPart from "../components/ForestParts/GroundCoverPart"
+import UndergroundPart from "../components/ForestParts/UndergroundPart"
+import VinePart from "../components/ForestParts/VinePart"
+import FungiPart from "../components/ForestParts/FungiPart"
 
 const ForestPicker = () => {
     const [page, setPage] = useState(0)
@@ -9,17 +15,36 @@ const ForestPicker = () => {
         title: '',
         canopy: '',
         subCanopy: '',
+        shrub: '',
+        herb: '',
+        groundCover: '',
+        underground: '',
+        vine: '',
+        fungi: '',
     })
 
-    const titles = ["Basic Info", "Canopy", "Subcanopy"]
+    const titles = ["Basic Info", "Canopy", "Subcanopy", "Shrub", "Herb", "Ground Cover", "Underground", "Vine", "Fungi"]
 
     const pageDisplay = () => {
-        if(page === 0) {
-            return <BasicInfoPart data={data} setData={setData}/>
-        } else if(page === 1) {
-            return <CanopyPart data={data} setData={setData}/>
-        } else {
-            return <SubCanopyPart data={data} setData={setData}/>
+        switch(page) {
+            case 0:
+                return <BasicInfoPart data={data} setData={setData}/>
+            case 1:
+                return <CanopyPart data={data} setData={setData}/>
+            case 2:
+                return <SubCanopyPart data={data} setData={setData}/>
+            case 3:
+                return <ShrubPart data={data} setData={setData}/>
+            case 4:
+                return <HerbPart data={data} setData={setData}/>
+            case 5:
+                return <GroundCoverPart data={data} setData={setData}/>
+            case 6:
+                return <UndergroundPart data={data} setData={setData}/>
+            case 7:
+                return <VinePart data={data} setData={setData}/>
+            case 8:
+            return <FungiPart data={data} setData={setData}/>
         }
     }
 

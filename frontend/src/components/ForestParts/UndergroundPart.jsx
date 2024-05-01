@@ -7,7 +7,7 @@ const UndergroundPart = ({data, setData}) => {
             <div className="mt-1">
                 <label className="block text-sm font-medium text-gray-700 pb-2">Underground</label>
                 <input 
-                    onChange={(e) => setData({...data, canopy: e.target.value})}
+                    onChange={(e) => setData({...data, underground: e.target.value})}
                     value = {data.underground}
                     type="text" 
                     id="underground"
