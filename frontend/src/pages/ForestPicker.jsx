@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import BasicInfoPart from "../components/BasicInfoPart"
-import CanopyPart from "../components/CanopyPart"
-import SubCanopyPart from "../components/SubCanopyPart"
+import BasicInfoPart from "../components/ForestParts/BasicInfoPart"
+import CanopyPart from "../components/ForestParts/CanopyPart"
+import SubCanopyPart from "../components/ForestParts/SubCanopyPart"
 
 const ForestPicker = () => {
     const [page, setPage] = useState(0)
@@ -41,6 +41,7 @@ const ForestPicker = () => {
                             onClick={(e) => {
                                 if(page === titles.length-1){
                                     alert("form submitted")
+                                    console.log(data)
                                 } else {
                                     setPage((currentPage) => currentPage+1)
                                 }

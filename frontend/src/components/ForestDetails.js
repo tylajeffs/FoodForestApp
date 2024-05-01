@@ -32,6 +32,7 @@ const ForestDetails = ({ forest }) => {
             <h4>{forest.title}</h4>
             <p><strong>Ecoregion: </strong>{forest.ecoregion}</p>
             <p><strong>Canopy: </strong>{forest.canopy}</p>
+            <p><strong>Subcanopy: </strong>{forest.subCanopy}</p>
             <p><strong>Shrub: </strong>{forest.shrub}</p>
             <p><strong>Herb: </strong>{forest.herb}</p>
             <p><strong>Ground Cover: </strong>{forest.groundCover}</p>
