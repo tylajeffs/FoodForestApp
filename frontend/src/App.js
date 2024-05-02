@@ -7,9 +7,11 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import ForestPicker from './pages/ForestPicker'
+import Map from './components/Map'
 
 function App() {
   const { user } = useAuthContext()
+  console.log("THIS IS THE USER: ",user)
 
   return (
     <div className="App">
@@ -31,7 +33,15 @@ function App() {
             />
             <Route
               path="/generate"
-              element={user ? <ForestPicker /> : <Navigate to="/login"/>}
+              element={user ? <ForestPicker/> : <Navigate to="/green"/>}
+            />
+            <Route
+              path="/map"
+              element={ <Map/> }
+            />
+            <Route
+              path="/generates"
+              element={ <ForestPicker/> }
             />
           </Routes>
         </div>

@@ -9,7 +9,9 @@
 :root {
   --primary: #1acc83;
   --error: #e7195a;
-}
+} 
+
+/*
 body {
   background: #f1f1f1;
   margin: 0;
@@ -35,8 +37,8 @@ header a {
   padding: 20px;
   margin: 0 auto;
 }
-
-/* homepage */
+*/
+/* homepage */ /*
 .home {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -75,7 +77,7 @@ header a {
   color: #333;
 }
 
-/* new forest form */
+/* new forest form */ /*
 
 label, input {
   display: block;

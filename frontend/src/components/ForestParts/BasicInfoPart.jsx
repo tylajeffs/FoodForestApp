@@ -5,7 +5,7 @@ const BasicInfoPart = ({data, setData}) => {
         <div className="space-y-6">
             {/* Forest Title Section */}
             <div className="mt-1">
-                <label className="block text-sm font-medium text-gray-700 pb-2">Forest Title</label>
+                <label className="block text-sm font-medium text-gray-700 pb-2">Name your forest!</label>
                 <input 
                     onChange={(e) => setData({...data, title: e.target.value})}
                     value = {data.title}

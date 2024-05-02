@@ -13,10 +13,12 @@ import GroundCoverPart from "../components/ForestParts/GroundCoverPart"
 import UndergroundPart from "../components/ForestParts/UndergroundPart"
 import VinePart from "../components/ForestParts/VinePart"
 import FungiPart from "../components/ForestParts/FungiPart"
+import Tile from "../components/Tile"
 
 const ForestPicker = () => {
-    const {dispatch} = useForestsContext()
+    const {forests, dispatch} = useForestsContext()
     const { user } = useAuthContext()
+    console.log("USER: ", user)
 
     const [page, setPage] = useState(0)
     const [error, setError] = useState(null)
@@ -150,10 +152,15 @@ const ForestPicker = () => {
                     </div>
                     {error && <div className="error">{error}</div>}
                 </div>
-            
             </div>
+            <div className=' grid grid-cols-1 gap-4 mx-5 my-5 sm:grid-cols-2 sm:mx-10 sm:my-10 lg:mx-20 lg:my-20 lg:grid-cols-3 '>
+                <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+            </div>
+            
         </div>
-        
     )
 }
 
