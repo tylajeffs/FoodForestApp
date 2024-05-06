@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 
 const CanopyPart = ({data, setData}) => {
+
+    //connect to the plant database
+    const [plants, setPlants] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await axios.get(`https://perenual.com/api/species-list?key=sk-8Blf663575a9a8b4e5338`);
+                setPlants(response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+        
+        fetchData();
+    }, []);
+
+    console.log(plants)
+
+
+
+
+
+
     return (
         <div className="space-y-6">
             {/* Canopy Section */}
